@@ -1,17 +1,105 @@
+html,
 body {
-  width: 100vw;
+  margin: 0;
+  padding: 0;
+  width: 100%;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
-  background: #1e1e24;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #000;
+}
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  margin: 2% auto;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  -webkit-animation: glowing 20s linear infinite;
+          animation: glowing 20s linear infinite;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 
 @-webkit-keyframes blinker {
@@ -33,6 +121,12 @@ body {
 }
 
 .section {
+  border: 1px solid white;
+  border-radius: 10%;
+  padding: 50px;
+  -o-border-image: linear-gradient(red, orange, yellow, green, #5db3ff, blue, purple) 30;
+     border-image: -webkit-gradient(linear, left top, left bottom, from(red), color-stop(orange), color-stop(yellow), color-stop(green), color-stop(#5db3ff), color-stop(blue), to(purple)) 30;
+     border-image: linear-gradient(red, orange, yellow, green, #5db3ff, blue, purple) 30;
   max-width: 800px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -66,62 +160,10 @@ body {
           animation-duration: 2s;
 }
 
-.btn-flip {
-  opacity: 1;
-  outline: 0;
-  color: #fff;
-  line-height: 40px;
-  position: relative;
+select,
+input {
+  -webkit-appearance: none;
+  margin: 1%;
   text-align: center;
-  letter-spacing: 1px;
-  display: inline-block;
-  text-decoration: none;
-  font-family: 'Open Sans';
-  text-transform: uppercase;
-}
-
-.btn-flip:hover:after {
-  opacity: 1;
-  -webkit-transform: translateY(0) rotateX(0);
-          transform: translateY(0) rotateX(0);
-}
-
-.btn-flip:hover:before {
-  opacity: 0;
-  -webkit-transform: translateY(50%) rotateX(90deg);
-          transform: translateY(50%) rotateX(90deg);
-}
-
-.btn-flip:after {
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 100%;
-  color: #323237;
-  display: block;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  position: absolute;
-  background: #adadaf;
-  content: attr(data-back);
-  -webkit-transform: translateY(-50%) rotateX(90deg);
-          transform: translateY(-50%) rotateX(90deg);
-}
-
-.btn-flip:before {
-  top: 0;
-  left: 0;
-  opacity: 1;
-  color: #adadaf;
-  display: block;
-  padding: 0 30px;
-  line-height: 40px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  position: relative;
-  background: #323237;
-  content: attr(data-front);
-  -webkit-transform: translateY(0) rotateX(0);
-          transform: translateY(0) rotateX(0);
 }
 /*# sourceMappingURL=style.css.map */
