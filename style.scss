@@ -111,6 +111,7 @@ body {
       purple
     )
     30;
+
   max-width: 800px;
   display: flex;
   flex-direction: column;
@@ -133,4 +134,5 @@ input {
   -webkit-appearance: none;
   margin: 1%;
   text-align: center;
+  border: none;
 }
